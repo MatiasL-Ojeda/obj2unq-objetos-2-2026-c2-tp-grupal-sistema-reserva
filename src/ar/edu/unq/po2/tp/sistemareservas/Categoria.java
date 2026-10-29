@@ -4,6 +4,7 @@ public enum Categoria {
     ALOJAMIENTO,
     ALQUILERAUTO,
     EXCURSION,
-    VUELO
+    VUELO,
+    PAQUETE
 
 }
