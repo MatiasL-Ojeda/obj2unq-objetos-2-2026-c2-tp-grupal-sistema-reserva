@@ -5,4 +5,10 @@ public abstract class MetodoPago {
     public MetodoPago(float montoAPagar){
         this.montoAPagar = montoAPagar;
     }
+    public abstract void validarDatos();
+    public abstract void reservarFondos();
+    public abstract void ejecutarTransaccion();
+    public void notificarResultado(Cliente c){
+        c.confirmarReserva();
+    }
 }

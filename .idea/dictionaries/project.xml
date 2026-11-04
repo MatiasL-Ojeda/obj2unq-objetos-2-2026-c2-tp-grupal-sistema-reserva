@@ -1,13 +1,50 @@
 <component name="ProjectDictionaryState">
   <dictionary name="project">
     <words>
+      <w>Bancaria</w>
+      <w>Billetera</w>
+      <w>Cliente</w>
+      <w>Comprobante</w>
+      <w>Datos</w>
+      <w>Inmediata</w>
+      <w>Pagar</w>
       <w>Pendiente</w>
+      <w>Saldo</w>
+      <w>Servicio</w>
+      <w>Solamente</w>
       <w>Solicitud</w>
+      <w>Transferencia</w>
+      <w>Validable</w>
+      <w>accion</w>
+      <w>acreditacion</w>
+      <w>agregar</w>
+      <w>arroja</w>
+      <w>billetera</w>
+      <w>bloquear</w>
+      <w>cancelar</w>
+      <w>catalogo</w>
+      <w>checkear</w>
       <w>chequear</w>
+      <w>comenzar</w>
       <w>confirmar</w>
+      <w>cualquier</w>
+      <w>cuando</w>
+      <w>cuenta</w>
       <w>este</w>
+      <w>excepcion</w>
+      <w>finalizar</w>
+      <w>generar</w>
       <w>momento</w>
+      <w>monto</w>
+      <w>notificacion</w>
+      <w>otro</w>
       <w>puede</w>
+      <w>realizar</w>
+      <w>saldo</w>
+      <w>servicio</w>
+      <w>servicios</w>
+      <w>transferencia</w>
+      <w>validar</w>
     </words>
   </dictionary>
 </component>
