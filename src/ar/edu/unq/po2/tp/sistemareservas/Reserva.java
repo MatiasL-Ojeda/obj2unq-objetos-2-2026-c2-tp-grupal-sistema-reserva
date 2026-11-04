@@ -1,9 +1,23 @@
 package ar.edu.unq.po2.tp.sistemareservas;
 
 public abstract class Reserva {
-    abstract void confirmar(Reserva r, Catalogo c);
-    abstract void checkear(Reserva r , Catalogo c);  // Deberia llevar un method cada uno o aplicar otra forma?
-    abstract void comenzar(Reserva r , Catalogo c);
-    abstract void finalizar(Reserva r, Catalogo c);
-    abstract void cancelar(Reserva r , Catalogo c);
+    public void confirmar(Reserva r, Cliente c){
+        throw new IllegalStateException("No se puede realizar esa accion en este momento.");
+    }
+    public void checkear(Reserva r , Cliente c){
+        throw new IllegalStateException("No se puede realizar esa accion en este momento.");
+    }
+    public void comenzar(Reserva r , Cliente c){
+        throw new IllegalStateException("No se puede realizar esa accion en este momento.");
+    }
+    public void finalizar(Reserva r, Cliente c){
+        throw new IllegalStateException("No se puede realizar esa accion en este momento.");
+    }
+    public void cancelar(Reserva r , Cliente c){
+        throw new IllegalStateException("No se puede realizar esa accion en este momento.");
+    }
+    //Solamente se puede agregar servicios cuando el estado es Solicitud Pendiente, cualquier otro arroja una excepcion.
+    public void agregarServicio(Catalogo catalogoCliente, Catalogo servicioAAgregar){
+        throw new IllegalStateException("Ya no se puede agregar servicios");
+    }
 }

@@ -4,9 +4,9 @@ package ar.edu.unq.po2.tp.sistemareservas;
     por lo que cree esta clase que representa al atributo dinamico
 */
 public class AtributoDinamico {
-    private String nombreAtributo;
+    private final String nombreAtributo;
     private boolean obligatoriedad;
-    private TipoDeAtributo tipo;
+    private final TipoDeAtributo tipo;
 
     public AtributoDinamico(String nombreAtributo, boolean obligatoriedad, TipoDeAtributo tipo){
         this.nombreAtributo = nombreAtributo;
@@ -17,6 +17,7 @@ public class AtributoDinamico {
     public String getNombreAtributo() {
         return nombreAtributo;
     }
+    public void setObligatoriedad(boolean obligatoriedad){this.obligatoriedad = obligatoriedad;}
     public boolean getObligatoriedad(){
         return obligatoriedad;
     }

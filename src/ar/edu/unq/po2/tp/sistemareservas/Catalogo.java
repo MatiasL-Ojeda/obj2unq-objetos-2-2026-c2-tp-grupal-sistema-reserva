@@ -12,7 +12,6 @@ public abstract class Catalogo {
     private Categoria categoria;   // Categoria del servicio/paquete
     private double precioBase;     // El precio base del servicio/paquete sin el descuento
     private double descuento;      // El porcentaje de descuento.
-    private Reserva estadoReserva = new SolicitudPendiente(); // El estado de la reserva.
     private List<AtributoDefinido> atributosDefinidos = new LinkedList<>(); // Lista de atributos dinamicos definidos.
 
     public Catalogo(String nombre, String proveedor, Categoria c, double precioBase, double descuento){
@@ -30,12 +29,9 @@ public abstract class Catalogo {
     }
     public double getPrecioBase(){return precioBase;}
     public double precioFinal(){
-        return precioBase * ((100 - descuento) / 100);
+        return this.getPrecioBase() * (100 - descuento) / 100;
     }
-    public void confirmarReserva(){
-        estadoReserva.confirmar(this.estadoReserva, this);
-    }
-    public void setReserva(Reserva r){this.estadoReserva = r;}
+
     //Valida todos los atributos dinamicos y fijos obligatorios
     public boolean validar(){
         // El codigo no puede ser menor a 1, por lo que igualarlo a 0 comprueba que no se le dio un valor.
@@ -47,6 +43,7 @@ public abstract class Catalogo {
             return false;
         }
         //Verifica la validez de todos los atributos dinamicos definidos.
-        return atributosDefinidos.stream().allMatch(ad -> ad.esValido());
+        return atributosDefinidos.stream().allMatch(AtributoDefinido::esValido);
     }
+    public void addCatalogo(Catalogo c){}
 }
