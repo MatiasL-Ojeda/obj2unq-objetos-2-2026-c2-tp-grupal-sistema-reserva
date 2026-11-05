@@ -1,10 +1,16 @@
 package ar.edu.unq.po2.tp.sistemareservas;
 
-public class TrasladoEstandar extends Traslado{
-    private int pasajeros;
-    //private Direccion dir;
+public class TrasladoEstandar implements MetodoTraslado{
+    private int cantPasajeros;
+    private Direccion dir;
+
+    public TrasladoEstandar (int cantPasajeros, Direccion dir) {
+        this.dir = dir;
+        this.cantPasajeros = cantPasajeros;
+    }
+
     @Override
-    public float costoTraslado(){
-        return 0; //PlataformaTransporte.estimarTraslado(this.pasajeros, this.dir); //Creo que seria algo asi?
+    public float calcularCosto() {
+        return PlataformaTransporte.estimarTraslado(this.cantPasajeros, this.dir);
     }
 }
