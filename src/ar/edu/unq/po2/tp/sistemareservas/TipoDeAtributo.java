@@ -7,5 +7,6 @@ public enum TipoDeAtributo {
     TEXTO,
     NUMERICO,
     BOOLEANO,
-    FECHA
+    FECHA,
+    TRANSPORTE
 }
