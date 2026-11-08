@@ -12,6 +12,7 @@ public abstract class Catalogo {
     private Categoria categoria;   // Categoria del servicio/paquete
     private double precioBase;     // El precio base del servicio/paquete sin el descuento
     private double descuento;      // El porcentaje de descuento.
+    private boolean disponible = true;
     private List<AtributoDefinido> atributosDefinidos = new LinkedList<>(); // Lista de atributos dinamicos definidos.
 
     public Catalogo(String nombre, String proveedor, Categoria c, double precioBase, double descuento){
@@ -31,6 +32,10 @@ public abstract class Catalogo {
     public double precioFinal(){
         return this.getPrecioBase() * (100 - descuento) / 100;
     }
+    public String getNombre(){return nombre;}
+    public Categoria getCategoria(){return categoria;}
+    public boolean tieneDisponibilidad(){return disponible;}
+    public void setDisponibilidad(boolean disponible){this.disponible = disponible;}
 
     //Valida todos los atributos dinamicos y fijos obligatorios
     public boolean validar(){
