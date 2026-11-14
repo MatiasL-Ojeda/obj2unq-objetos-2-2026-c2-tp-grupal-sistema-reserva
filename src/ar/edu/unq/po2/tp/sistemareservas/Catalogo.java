@@ -33,6 +33,7 @@ public abstract class Catalogo {
         return this.getPrecioBase() * (100 - descuento) / 100;
     }
     public String getNombre(){return nombre;}
+    public String getProveedor(){return proveedor;}
     public Categoria getCategoria(){return categoria;}
     public boolean tieneDisponibilidad(){return disponible;}
     public void setDisponibilidad(boolean disponible){this.disponible = disponible;}
