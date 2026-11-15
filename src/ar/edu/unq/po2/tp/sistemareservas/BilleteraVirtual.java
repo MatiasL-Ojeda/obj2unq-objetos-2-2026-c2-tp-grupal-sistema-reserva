@@ -23,7 +23,7 @@ public class BilleteraVirtual extends MetodoPago{
     }
 
     @Override
-    public void notificarResultado(Cliente c) {
+    public void notificarResultado(SistemaCatalogo c) {
         super.notificarResultado(c);
         billeteraVirtual.notificacionPush();
     }

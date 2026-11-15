@@ -12,7 +12,7 @@ class TrasladoPuntoEncuentroTest {
     private Guia g2 = new Guia(false, p2);
 
     @BeforeEach
-    public void setUp(){
+    void setUp(){
         this.gG1.agregarGuia(g1);
         this.gG1.agregarGuia(g2);
     }

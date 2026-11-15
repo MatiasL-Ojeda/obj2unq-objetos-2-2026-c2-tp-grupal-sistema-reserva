@@ -8,7 +8,7 @@ public abstract class MetodoPago {
     public abstract void validarDatos();
     public abstract void reservarFondos();
     public abstract void ejecutarTransaccion();
-    public void notificarResultado(Cliente c){
+    public void notificarResultado(SistemaCatalogo c){
         c.confirmarReserva();
     }
 }

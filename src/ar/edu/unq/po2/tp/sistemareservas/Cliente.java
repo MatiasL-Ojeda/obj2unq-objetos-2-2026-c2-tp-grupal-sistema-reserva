@@ -1,20 +1,14 @@
 package ar.edu.unq.po2.tp.sistemareservas;
 
-import java.util.HashMap;
-
 public class Cliente {
+    private final MetodoPago metodoPago;
+    private final String correo;
 
-    Catalogo c; // El catalogo de los servicios elegidos por el cliente.
+    public Cliente (MetodoPago mP, String c) {
+        this.correo = c;
+        this.metodoPago = mP;
+    }
 
-    private Reserva estadoReserva = new SolicitudPendiente(); // El estado de la reserva inicial del cliente.
-
-    public void agregarServicicio(Catalogo servicioAAgregar){
-        estadoReserva.agregarServicio(c, servicioAAgregar);
-    }
-    public void confirmarReserva(){
-        estadoReserva.confirmar(this.estadoReserva, this);
-    }
-    public void setReserva(Reserva r){
-        this.estadoReserva = r;
-    }
+    public String Correo () {return correo;}
+    public MetodoPago metodoPago () {return metodoPago;}
 }
