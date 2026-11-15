@@ -1,15 +1,15 @@
 package ar.edu.unq.po2.tp.sistemareservas;
 
 public class TrasladoEstandar implements MetodoTraslado{
-    private int cantPasajeros;
-    private Direccion dir;
+    private int cantPasajeros; // cantidad de pasajeros del traslado.
+    private Direccion dir;     // Direccion a la cual llevarlos.
 
-    public TrasladoEstandar (int cantPasajeros, Direccion dir) {
-        this.dir = dir;
-        this.cantPasajeros = cantPasajeros;
+    public TrasladoEstandar(int i, Direccion direccion) {
+        this.cantPasajeros = i;
+        this.dir = direccion;
     }
 
-    @Override
+    @Override // calculo el costo del viaje.
     public float calcularCosto() {
         return PlataformaTransporte.estimarTraslado(this.cantPasajeros, this.dir);
     }
