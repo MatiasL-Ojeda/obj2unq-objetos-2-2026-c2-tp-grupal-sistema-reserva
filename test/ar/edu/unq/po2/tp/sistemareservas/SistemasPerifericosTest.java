@@ -4,10 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.HashSet;
 import java.util.Set;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class SistemasPerifericosTest {
 
+    private MetodoPago metodoPago;
     private Cliente cliente;
     private Subsistemas sub1;
     private Subsistemas sub2;
@@ -15,7 +17,7 @@ class SistemasPerifericosTest {
 
     @BeforeEach
     void setUp() {
-        MetodoPago metodoPago = mock(MetodoPago.class);
+        metodoPago = mock(MetodoPago.class);
         cliente = new Cliente(metodoPago, "cliente@gmail.com");
 
         sub1 = mock(Subsistemas.class);
@@ -56,5 +58,26 @@ class SistemasPerifericosTest {
         sistema.notificar(mock(Reserva.class), mock(Reserva.class));
 
         verify(sub1, never()).upDate(anyString(), any(), any());
+    }
+
+    @Test
+    void obtenerSubsistemasYMetodosCliente() {
+        assertEquals(2, sistema.getSubsistemas().size());
+        assertTrue(sistema.getSubsistemas().contains(sub1));
+        assertSame(metodoPago, cliente.metodoPago());
+        assertEquals("cliente@gmail.com", cliente.Correo());
+    }
+
+    @Test
+    void subsistemasMetodosBase() {
+        Subsistemas subBase = new Subsistemas() {};
+        Reserva r1 = mock(Reserva.class);
+        Reserva r2 = mock(Reserva.class);
+
+        assertFalse(subBase.SonDistintos(r1, r1));
+        assertTrue(subBase.SonDistintos(r1, r2));
+
+        // Test default upDate
+        subBase.upDate("cliente@gmail.com", r1, r2);
     }
 }

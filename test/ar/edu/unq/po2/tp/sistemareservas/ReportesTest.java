@@ -223,5 +223,53 @@ class ReportesTest {
 
         String csv = reporte.exportar(exportadorCsv);
         assertEquals("operador,cantidad_items,porcentaje_catalogo\n", csv);
+
+        ReporteExposicionOperador reporteNull = new ReporteExposicionOperador(null);
+        assertTrue(reporteNull.getFilas().isEmpty());
+    }
+
+    @Test
+    void reporteExposicionConProveedorNuloUsaSinProveedor() {
+        Servicio s1 = new Servicio("Tour Sin Operador", null, Categoria.EXCURSION, 1000, 0);
+        ReporteExposicionOperador reporte = new ReporteExposicionOperador(List.of(s1));
+
+        assertEquals(1, reporte.getFilas().size());
+        assertEquals("Sin Proveedor", reporte.getFilas().get(0).operador());
+    }
+
+    @Test
+    void reporteOcupacionCuposCasosBordeFechasYRegistrosNulos() {
+        LocalDate hoy = LocalDate.of(2026, 7, 10);
+        RegistroOcupacion reg = new RegistroOcupacion(Categoria.ALOJAMIENTO, 10, 5, hoy);
+
+        ReporteOcupacionCupos r1 = new ReporteOcupacionCupos(null, hoy, hoy);
+        assertTrue(r1.getFilas().isEmpty());
+
+        ReporteOcupacionCupos r2 = new ReporteOcupacionCupos(List.of(reg), null, hoy);
+        assertTrue(r2.getFilas().isEmpty());
+
+        ReporteOcupacionCupos r3 = new ReporteOcupacionCupos(List.of(reg), hoy, null);
+        assertTrue(r3.getFilas().isEmpty());
+
+        ReporteOcupacionCupos r4 = new ReporteOcupacionCupos(Collections.emptyList(), hoy, hoy);
+        assertTrue(r4.getFilas().isEmpty());
+
+        ReporteOcupacionCupos.FilaOcupacion fila = new ReporteOcupacionCupos.FilaOcupacion(Categoria.ALOJAMIENTO, 10, 4, 6);
+        ReporteOcupacionCupos r5 = new ReporteOcupacionCupos(List.of(fila));
+        assertEquals(1, r5.getFilas().size());
+        assertEquals(fila, r5.getFilas().get(0));
+    }
+
+    @Test
+    void exportadoresManejanTextosNulos() {
+        ReporteServiciosMasReservados.FilaServicioMasReservado filaConNombreNulo =
+                new ReporteServiciosMasReservados.FilaServicioMasReservado(null, 1, 50.0);
+        ReporteServiciosMasReservados reporte = new ReporteServiciosMasReservados(List.of(filaConNombreNulo));
+
+        String html = exportadorHtml.visitar(reporte);
+        assertTrue(html.contains("<td></td>"));
+
+        String csv = exportadorCsv.visitar(reporte);
+        assertTrue(csv.contains(",1,50.00"));
     }
 }

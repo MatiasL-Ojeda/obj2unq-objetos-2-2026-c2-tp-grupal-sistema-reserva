@@ -185,4 +185,24 @@ class BusquedaCatalogoTest {
         assertEquals(1, resultados.size());
         assertTrue(resultados.contains(packEscapada));
     }
+
+    @Test
+    void busquedaConCriterioNuloRetornaListaVacia() {
+        List<Catalogo> resultados = buscador.buscar(null);
+        assertNotNull(resultados);
+        assertTrue(resultados.isEmpty());
+    }
+
+    @Test
+    void criterioPorNombreManejaNulos() {
+        CriterioPorNombre criterio = new CriterioPorNombre("hotel");
+
+        assertFalse(criterio.satisface(null));
+
+        Servicio itemSinNombre = new Servicio(null, "Proveedor", Categoria.ALOJAMIENTO, 1000, 0);
+        assertFalse(criterio.satisface(itemSinNombre));
+
+        CriterioPorNombre criterioTextoNulo = new CriterioPorNombre(null);
+        assertFalse(criterioTextoNulo.satisface(hotelCentral));
+    }
 }
