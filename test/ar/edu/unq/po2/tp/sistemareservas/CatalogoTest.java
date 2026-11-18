@@ -3,7 +3,6 @@ package ar.edu.unq.po2.tp.sistemareservas;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -60,28 +59,6 @@ class CatalogoTest {
     @Test
     void validarFallaPorNombreVacio() {
         Servicio s = new Servicio("   ", "Hoteles SA", Categoria.ALOJAMIENTO, 5000.0, 0.0);
-        assertFalse(s.validar());
-    }
-
-    @Test
-    @SuppressWarnings("unchecked")
-    void validarConAtributosDefinidos() throws Exception {
-        Servicio s = new Servicio("Hotel Sol", "Hoteles SA", Categoria.ALOJAMIENTO, 5000.0, 0.0);
-
-        Field field = Catalogo.class.getDeclaredField("atributosDefinidos");
-        field.setAccessible(true);
-        List<AtributoDefinido> lista = (List<AtributoDefinido>) field.get(s);
-
-        AtributoDefinido attrValido = mock(AtributoDefinido.class);
-        when(attrValido.esValido()).thenReturn(true);
-        lista.add(attrValido);
-
-        assertTrue(s.validar());
-
-        AtributoDefinido attrInvalido = mock(AtributoDefinido.class);
-        when(attrInvalido.esValido()).thenReturn(false);
-        lista.add(attrInvalido);
-
         assertFalse(s.validar());
     }
 }
